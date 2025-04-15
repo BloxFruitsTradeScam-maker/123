@@ -58,6 +58,24 @@ task.spawn(function()
                                 prompt.Enabled = true
                                 fireproximityprompt(prompt, 1, true)
                             elseif autoWalkToPlant then
+                                local Players = game:GetService("Players")
+                                local player = Players.LocalPlayer
+
+                                -- Wait for character to load
+                                player.CharacterAdded:Connect(function(character)
+	                                local humanoid = character:WaitForChild("Humanoid")
+
+	                                while true do
+		                                if humanoid:GetState() == Enum.HumanoidStateType.Seated then
+			                        -- Skip if the player is seated (e.g., in a vehicle)
+			                                wait(0.1)
+		                                else
+			                                humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+			                                wait(0.2) -- Controls how fast it jumps
+		                                end
+	                                end
+                                end)
+
                                 -- Make the player walk to the plant if it's farther than 20 studs
                                 local humanoid = player.Character and player.Character:FindFirstChild("Humanoid")
                                 if humanoid then
