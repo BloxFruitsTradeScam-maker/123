@@ -81,9 +81,9 @@ task.spawn(function()
                 local root = character:WaitForChild("HumanoidRootPart")
                 task.wait(10)
                 root.CFrame = shopStand.CFrame * CFrame.new(0, 0, 3)
-                task.wait(0.5)
+                task.wait(1)
                 game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("Sell_Inventory"):FireServer()
-                task.wait(0.5)
+                task.wait(1)
                 root.CFrame = CFrame.new(27.028656, 4.61500359, -81.4960098, 0.801240802, -3.3885601e-09, -0.598342061, -3.22234683e-10, 1, -6.09475403e-09, 0.598342061, 5.07617193e-09, 0.801240802)
             end
         end
